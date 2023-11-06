@@ -127,6 +127,17 @@ export default function LessonEditor({
               placeholder="Enter lesson standards"
             />
           </Form.Item>
+          <Form.Item label="Upload Video">
+            <Input
+              onChange={e => {
+                setLink(e.target.value)
+                setLinkError(false)
+              }}
+              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={link}
+              placeholder="Enter a link"
+            />
+          </Form.Item>
           <Form.Item label="Link to Additional Resources (Optional)">
             <Input
               onChange={e => {
@@ -138,6 +149,7 @@ export default function LessonEditor({
               placeholder="Enter a link"
             />
           </Form.Item>
+          
           <Form.Item
             wrapperCol={{
               offset: 8,
