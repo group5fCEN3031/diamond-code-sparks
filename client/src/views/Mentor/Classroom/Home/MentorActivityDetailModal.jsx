@@ -199,6 +199,14 @@ const MentorActivityDetailModal = ({
             placeholder="Enter standards"
           ></Input>
         </Form.Item>
+        <Form.Item id="form-label" label="Video">
+          <Input
+            onChange={e => setImages(e.target.value)}
+            value={images}
+            className="input"
+            placeholder="Enter Video URL"
+          ></Input>
+        </Form.Item>
         <Form.Item id="form-label" label="Table Chart">
           <Input.TextArea
             onChange={e => setImages(e.target.value)}
@@ -273,8 +281,7 @@ const MentorActivityDetailModal = ({
           </button>
           <button id="save--set-demo-btn" onClick={() => setSubmitButton(2)}>
             Edit Demo Template
-            <br />
-            
+            <br />           
           </button>
         </Form.Item>
         <Form.Item

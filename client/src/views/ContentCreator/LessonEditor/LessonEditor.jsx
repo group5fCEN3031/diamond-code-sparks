@@ -19,7 +19,9 @@ export default function LessonEditor({
   const [description, setDescription] = useState("")
   const [standards, setStandards] = useState("")
   const [link, setLink] = useState("")
+  const [videoLink, setVideoLink] = useState("")
   const [linkError, setLinkError] = useState(false)
+  const [videoLinkError, setVideoLinkError] = useState(false)
   const [displayName, setDisplayName] = useState(learningStandard.name)
   // eslint-disable-next-line
   const [_, setSearchParams] = useSearchParams()
@@ -31,7 +33,9 @@ export default function LessonEditor({
     setDescription(res.data.expectations)
     setStandards(res.data.standards)
     setLink(res.data.link)
+    setVideoLink(res.data.videoLink)
     setLinkError(false)
+    setVideoLinkError(false)
   }
 
   useEffect(() => {
@@ -41,13 +45,20 @@ export default function LessonEditor({
   const handleCancel = () => {
     setVisible(false)
   }
-
   const handleSubmit = async () => {
     if (link) {
       const goodLink = checkURL(link)
       if (!goodLink) {
         setLinkError(true)
-        message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
+        message.error("Please Enter a valid URL for the additional resources starting with HTTP/HTTPS", 4)
+        return
+      }
+    }
+    if (videoLink) {
+      const goodLink = checkURL(videoLink)
+      if (!goodLink) {
+        setVideoLinkError(true)
+        message.error("Please Enter a valid URL for the video starting with HTTP/HTTPS", 4)
         return
       }
     }
@@ -130,12 +141,12 @@ export default function LessonEditor({
           <Form.Item label="Upload Video">
             <Input
               onChange={e => {
-                setLink(e.target.value)
-                setLinkError(false)
+                setVideoLink(e.target.value)
+                setVideoLinkError(false)
               }}
-              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={link}
-              placeholder="Enter a link"
+              style={videoLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={videoLink}
+              placeholder="Enter Video URL"
             />
           </Form.Item>
           <Form.Item label="Link to Additional Resources (Optional)">
