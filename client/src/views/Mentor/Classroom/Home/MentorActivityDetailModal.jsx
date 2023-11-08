@@ -27,6 +27,7 @@ const MentorActivityDetailModal = ({
   const [StandardS, setStandardS] = useState("")
   const [images, setImages] = useState("")
   const [link, setLink] = useState("")
+  const [videoLink, setVideoLink] = useState("")
   const [visible, setVisible] = useState(false);
   const [scienceComponents, setScienceComponents] = useState([])
   const [makingComponents, setMakingComponents] = useState([])
@@ -199,14 +200,6 @@ const MentorActivityDetailModal = ({
             placeholder="Enter standards"
           ></Input>
         </Form.Item>
-        <Form.Item id="form-label" label="Video">
-          <Input
-            onChange={e => setImages(e.target.value)}
-            value={images}
-            className="input"
-            placeholder="Enter Video URL"
-          ></Input>
-        </Form.Item>
         <Form.Item id="form-label" label="Table Chart">
           <Input.TextArea
             onChange={e => setImages(e.target.value)}
@@ -252,6 +245,7 @@ const MentorActivityDetailModal = ({
             setComponents={setComputationComponents}
             colorOffset={7}
           />
+          
         </Form.Item>
         <h3 id="subtitle">Additional Information</h3>
         <Form.Item
