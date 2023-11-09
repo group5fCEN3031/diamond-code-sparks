@@ -18,8 +18,10 @@ export default function LessonEditor({
   const [name, setName] = useState(learningStandard.name)
   const [description, setDescription] = useState("")
   const [standards, setStandards] = useState("")
-  const [link, setLink] = useState("")
-  const [linkError, setLinkError] = useState(false)
+  const [youtubeLink, setYoutubeLink] = useState("")
+  const [additionalLink, setAdditionalLink] = useState("")
+  const [youtubeLinkError, setYoutubeLinkError] = useState(false)
+  const [additionalLinkError, setAdditionalLinkError] = useState(false)
   const [displayName, setDisplayName] = useState(learningStandard.name)
   // eslint-disable-next-line
   const [_, setSearchParams] = useSearchParams()
@@ -30,8 +32,10 @@ export default function LessonEditor({
     setName(res.data.name)
     setDescription(res.data.expectations)
     setStandards(res.data.standards)
-    setLink(res.data.link)
-    setLinkError(false)
+    setYoutubeLink(res.data.youtubeLink)
+    setAdditionalLink(res.data.additionalLink)
+    setAdditionalLinkError(false)
+    setYoutubeLinkError(false)
   }
 
   useEffect(() => {
@@ -43,10 +47,18 @@ export default function LessonEditor({
   }
 
   const handleSubmit = async () => {
-    if (link) {
-      const goodLink = checkURL(link)
-      if (!goodLink) {
-        setLinkError(true)
+    if (youtubeLink) {
+      const goodYoutube = checkURL(youtubeLink)
+      if (!goodYoutube) {
+        setYoutubeLinkError(true)
+        message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
+        return
+      }
+    }
+    if (additionalLink) {
+      const goodAdditional = checkURL(additionalLink)
+      if (!goodAdditional) {
+        setAdditionalLinkError(true)
         message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
         return
       }
@@ -130,22 +142,22 @@ export default function LessonEditor({
           <Form.Item label="Upload Video">
             <Input
               onChange={e => {
-                setLink(e.target.value)
-                setLinkError(false)
+                setYoutubeLink(e.target.value)
+                setYoutubeLinkError(false)
               }}
-              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={link}
+              style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={youtubeLink}
               placeholder="Enter a link"
             />
           </Form.Item>
           <Form.Item label="Link to Additional Resources (Optional)">
             <Input
               onChange={e => {
-                setLink(e.target.value)
-                setLinkError(false)
+                setAdditionalLink(e.target.value)
+                setAdditionalLinkError(false)
               }}
-              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={link}
+              style={additionalLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={additionalLink}
               placeholder="Enter a link"
             />
           </Form.Item>
