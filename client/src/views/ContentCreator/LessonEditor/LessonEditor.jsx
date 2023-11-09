@@ -38,6 +38,16 @@ export default function LessonEditor({
     setYoutubeLinkError(false)
   }
 
+  const handleYouTubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value);
+  };
+
+  const getYouTubeEmbedLink = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : null;
+  };
+
   useEffect(() => {
     setDisplayName(learningStandard.name)
   }, [learningStandard.name])
@@ -161,6 +171,26 @@ export default function LessonEditor({
               placeholder="Enter a link"
             />
           </Form.Item>
+
+
+          <Form.Item label="YouTube Link">
+        <Input
+          placeholder="Enter YouTube link here"
+          value={youtubeLink}
+          onChange={handleYouTubeLinkChange}
+        />
+      </Form.Item>
+
+      {youtubeLink && (
+        <iframe
+          width="560"
+          height="315"
+          src={getYouTubeEmbedLink(youtubeLink)}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
           
           <Form.Item
             wrapperCol={{
