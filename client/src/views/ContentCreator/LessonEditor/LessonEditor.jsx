@@ -45,7 +45,6 @@ export default function LessonEditor({
   const handleCancel = () => {
     setVisible(false)
   }
-
   const handleSubmit = async () => {
     if (youtubeLink) {
       const goodYoutube = checkURL(youtubeLink)

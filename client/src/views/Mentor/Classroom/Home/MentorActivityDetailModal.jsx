@@ -27,6 +27,7 @@ const MentorActivityDetailModal = ({
   const [StandardS, setStandardS] = useState("")
   const [images, setImages] = useState("")
   const [link, setLink] = useState("")
+  const [videoLink, setVideoLink] = useState("")
   const [visible, setVisible] = useState(false);
   const [scienceComponents, setScienceComponents] = useState([])
   const [makingComponents, setMakingComponents] = useState([])
@@ -244,6 +245,7 @@ const MentorActivityDetailModal = ({
             setComponents={setComputationComponents}
             colorOffset={7}
           />
+          
         </Form.Item>
         <h3 id="subtitle">Additional Information</h3>
         <Form.Item
@@ -273,8 +275,7 @@ const MentorActivityDetailModal = ({
           </button>
           <button id="save--set-demo-btn" onClick={() => setSubmitButton(2)}>
             Edit Demo Template
-            <br />
-            
+            <br />           
           </button>
         </Form.Item>
         <Form.Item
