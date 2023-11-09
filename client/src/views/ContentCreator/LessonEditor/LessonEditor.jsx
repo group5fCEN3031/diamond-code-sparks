@@ -149,17 +149,7 @@ export default function LessonEditor({
               placeholder="Enter lesson standards"
             />
           </Form.Item>
-          <Form.Item label="Upload Video">
-            <Input
-              onChange={e => {
-                setYoutubeLink(e.target.value)
-                setYoutubeLinkError(false)
-              }}
-              style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={youtubeLink}
-              placeholder="Enter a link"
-            />
-          </Form.Item>
+
           <Form.Item label="Link to Additional Resources (Optional)">
             <Input
               onChange={e => {
@@ -173,10 +163,11 @@ export default function LessonEditor({
           </Form.Item>
 
 
-          <Form.Item label="YouTube Link">
+          <Form.Item label="Upload YouTube Video">
         <Input
           placeholder="Enter YouTube link here"
           value={youtubeLink}
+          style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
           onChange={handleYouTubeLinkChange}
         />
       </Form.Item>
