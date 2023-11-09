@@ -77,8 +77,8 @@ export default function LessonEditor({
       name,
       description,
       standards,
-      youtubeLink,
-      additionalLink
+      additionalLink,
+      youtubeLink
     )
     if (response.err) {
       message.error("Fail to update lesson")
@@ -149,6 +149,18 @@ export default function LessonEditor({
               placeholder="Enter lesson standards"
             />
           </Form.Item>
+
+          {/* <Form.Item label="Upload Video">
+            <Input
+              onChange={e => {
+                setYoutubeLink(e.target.value)
+                setYoutubeLinkError(false)
+              }}
+              style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={youtubeLink}
+              placeholder="Enter a link"
+            />
+          </Form.Item> */}
 
           <Form.Item label="Link to Additional Resources (Optional)">
             <Input
