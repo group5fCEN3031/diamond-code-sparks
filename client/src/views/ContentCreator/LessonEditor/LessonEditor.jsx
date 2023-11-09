@@ -67,7 +67,8 @@ export default function LessonEditor({
       name,
       description,
       standards,
-      link
+      youtubeLink,
+      additionalLink
     )
     if (response.err) {
       message.error("Fail to update lesson")
