@@ -173,6 +173,27 @@ export default function LessonEditor({
               placeholder="Enter a link"
             />
           </Form.Item>
+
+
+          <Form.Item label="Upload YouTube Video">
+        <Input
+          placeholder="Enter YouTube link here"
+          value={youtubeLink}
+          style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+          onChange={handleYouTubeLinkChange}
+        />
+      </Form.Item>
+
+      {youtubeLink && (
+        <iframe
+          width="560"
+          height="315"
+          src={getYouTubeEmbedLink(youtubeLink)}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
           
           <Form.Item
             wrapperCol={{
