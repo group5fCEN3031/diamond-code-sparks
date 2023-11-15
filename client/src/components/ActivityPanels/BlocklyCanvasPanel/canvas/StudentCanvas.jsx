@@ -380,7 +380,7 @@ export default function StudentCanvas({ activity }) {
                   <Col flex='auto' />
 
                   <Col flex={'300px'}>
-                    {lastSavedTime ? `Last changes saved ${lastSavedTime}` : ''}
+                    {lastSavedTime ? `ges saved ${lastSavedTime}` : ''}
                   </Col>
                   <Col flex={'350px'}>
                     <Row>

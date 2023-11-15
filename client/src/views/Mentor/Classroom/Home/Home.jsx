@@ -172,7 +172,10 @@ export default function Home({ classroomId, viewing }) {
                           {activity.description}
                         </p>
                         <p>
-                          <strong>Video: TEST</strong>
+                        <strong>Link to YouTube Video: </strong>
+                            <a href={activity.link} target='_blank' rel='noreferrer'>
+                              {activity.link}
+                            </a>
                           
                         </p>
                         <p>
@@ -233,9 +236,6 @@ export default function Home({ classroomId, viewing }) {
                         {activity.link ? (
                           <p>
                             <strong>Link to Additional Information: </strong>
-                            <a href={activity.link} target='_blank' rel='noreferrer'>
-                              {activity.link}
-                            </a>
                           </p>
                         ) : null}
                       </div>
