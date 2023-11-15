@@ -451,7 +451,8 @@ export const updateLessonModule = async (
   name,
   expectations,
   standards,
-  link
+  additionalLink,
+  youtubeLink
 ) =>
   makeRequest({
     method: PUT,
@@ -460,7 +461,8 @@ export const updateLessonModule = async (
       name,
       standards,
       expectations,
-      link,
+      additionalLink,
+      youtubeLink
     },
     auth: true,
     error: 'Failed to update unit',

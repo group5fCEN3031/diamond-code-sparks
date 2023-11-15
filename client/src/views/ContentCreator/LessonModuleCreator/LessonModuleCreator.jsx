@@ -194,7 +194,7 @@ export default function LessonModuleCreator({
               placeholder="Enter lesson Standards"
             />
           </Form.Item>
-          <Form.Item label="Link to Video">
+          <Form.Item label="Upload YouTube Video">
             <Input
               onChange={e => {
                 setVideoLink(e.target.value)
@@ -202,9 +202,12 @@ export default function LessonModuleCreator({
               }}
               style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
               value={videoLink}
-              placeholder="Enter Video URL"
+              placeholder="Enter YouTube URL"
             />
           </Form.Item>
+
+          
+          
           <Form.Item label="Link to Additional Resource (Optional)">
             <Input
               onChange={e => {
