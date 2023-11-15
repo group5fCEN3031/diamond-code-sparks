@@ -380,7 +380,7 @@ export default function StudentCanvas({ activity }) {
                   <Col flex='auto' />
 
                   <Col flex={'300px'}>
-                    {lastSavedTime ? `ges saved ${lastSavedTime}` : ''}
+                    {lastSavedTime ? `Changes saved ${lastSavedTime}` : ''}
                   </Col>
                   <Col flex={'350px'}>
                     <Row>
@@ -548,6 +548,18 @@ export default function StudentCanvas({ activity }) {
           onClose={(e) => setCompileError('')}
         ></Alert>
       )}
+       {/* Embedding the YouTube Video */}
+       <div className="youtube-video-container">
+        <iframe
+          width="860"
+          height="615"
+          src="https://www.youtube.com/embed/BphbLthD3Ek" // Replace [VideoID] with your YouTube video ID
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 }

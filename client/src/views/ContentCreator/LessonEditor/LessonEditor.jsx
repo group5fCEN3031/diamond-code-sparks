@@ -40,6 +40,7 @@ export default function LessonEditor({
 
   const handleYouTubeLinkChange = (event) => {
     setYoutubeLink(event.target.value);
+    setYoutubeLinkError(false);
   };
 
   const getYouTubeEmbedLink = (url) => {
@@ -175,8 +176,8 @@ export default function LessonEditor({
           </Form.Item>
 
 
-          <Form.Item label="Upload YouTube Video">
-        <Input
+         <Form.Item label="Upload YouTube Video">
+          <Input
           placeholder="Enter YouTube link here"
           value={youtubeLink}
           style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
