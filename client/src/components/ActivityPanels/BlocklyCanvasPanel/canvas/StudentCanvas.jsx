@@ -16,6 +16,7 @@ import {
 import ArduinoLogo from '../Icons/ArduinoLogo';
 import PlotterLogo from '../Icons/PlotterLogo';
 import { useNavigate } from 'react-router-dom';
+import ReactPlayer from 'react-player/youtube';
 
 let plotId = 1;
 
@@ -37,6 +38,7 @@ export default function StudentCanvas({ activity }) {
   const [lastSavedTime, setLastSavedTime] = useState(null);
   const [lastAutoSave, setLastAutoSave] = useState(null);
 
+  
   const [forceUpdate] = useReducer((x) => x + 1, 0);
   const navigate = useNavigate();
   const workspaceRef = useRef(null);
@@ -547,17 +549,18 @@ export default function StudentCanvas({ activity }) {
       </xml>
 
       {/* Embedding the YouTube Video */}
-      <div className="youtube-video-container">
-        <iframe
+      <div className={activity.link}>
+        <ReactPlayer url="https://www.youtube.com/watch?v=zvs1Y2IIGv4" />
+        {/*<iframe
           width="860"
           height="615"
-        //  src={"https://www.youtube.com/embed/U9mJuUkhUzk"}
+          //src={"https://www.youtube.com/embed/U9mJuUkhUzk"}
           src={getYouTubeEmbedLink(activity.link)}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+      ></iframe>*/}
       </div>
 
       {compileError && (
