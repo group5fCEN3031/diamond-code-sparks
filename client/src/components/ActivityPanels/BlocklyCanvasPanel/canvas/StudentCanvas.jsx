@@ -47,11 +47,6 @@ export default function StudentCanvas({ activity }) {
   const replayRef = useRef([]);
   const clicks = useRef(0);
 
-  const getYouTubeEmbedLink = (url) => {
-    const videoId = url.substring(url.length - 11);
-    return `https://www.youtube.com/embed/${videoId}`;
-  };
-
   const setWorkspace = () => {
     workspaceRef.current = window.Blockly.inject('blockly-canvas', {
       toolbox: document.getElementById('toolbox'),
@@ -549,18 +544,13 @@ export default function StudentCanvas({ activity }) {
       </xml>
 
       {/* Embedding the YouTube Video */}
-      <div className={activity.link}>
-        <ReactPlayer url="https://www.youtube.com/watch?v=zvs1Y2IIGv4" />
-        {/*<iframe
-          width="860"
-          height="615"
-          //src={"https://www.youtube.com/embed/U9mJuUkhUzk"}
-          src={getYouTubeEmbedLink(activity.link)}
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-      ></iframe>*/}
+      <div style={{ margin: '20px', textAlign: 'center' }}>
+        <ReactPlayer 
+        url={activity.link}
+        width='800px' 
+        height='450px'
+         />
+        
       </div>
 
       {compileError && (
