@@ -27,6 +27,8 @@ const ActivityDetailModal = ({
   const [StandardS, setStandardS] = useState("")
   const [images, setImages] = useState("")
   const [link, setLink] = useState("")
+  const [YoutubeLink, setYoutubeLink] = useState("")
+  const [youtubeLinkError, setYoutubeLinkError] = useState(false)
 
   const [scienceComponents, setScienceComponents] = useState([])
   const [makingComponents, setMakingComponents] = useState([])
@@ -48,6 +50,7 @@ const ActivityDetailModal = ({
       setStandardS(response.data.StandardS)
       setImages(response.data.images)
       setLink(response.data.link)
+      setYoutubeLink(response.data.YoutubeLink)
       setLinkError(false)
       const science = response.data.learning_components
         .filter(component => component.learning_component_type === SCIENCE)
@@ -72,6 +75,16 @@ const ActivityDetailModal = ({
     }
     showActivityDetailsModal()
   }, [selectActivity])
+
+  const handleYouTubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value);
+  };
+
+  const getYouTubeEmbedLink = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : null;
+  };
 
   const checkURL = n => {
     const regex =
@@ -104,6 +117,14 @@ const ActivityDetailModal = ({
   }
 
   const handleSave = async () => {
+    if (YoutubeLink) {
+      const goodYoutube = checkURL(YoutubeLink)
+      if (!goodYoutube) {
+        setYoutubeLinkError(true)
+        message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
+        return
+      }
+    }
     if (link) {
       const goodLink = checkURL(link)
       if (!goodLink) {
@@ -120,9 +141,10 @@ const ActivityDetailModal = ({
       StandardS,
       images,
       link,
+      YoutubeLink,
       scienceComponents,
       makingComponents,
-      computationComponents
+      computationComponents,
     )
     if (res.err) {
       message.error(res.err)
@@ -236,6 +258,8 @@ const ActivityDetailModal = ({
             placeholder="Enter a link"
           ></Input>
         </Form.Item>
+
+
         <Form.Item
           id="form-label"
           wrapperCol={{
@@ -254,6 +278,25 @@ const ActivityDetailModal = ({
             Demo Template
           </button>
         </Form.Item>
+        <Form.Item label="Upload YouTube Video">
+        <Input
+          placeholder="Enter YouTube link here"
+          value={YoutubeLink}
+          style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+          onChange={handleYouTubeLinkChange}
+        />
+      </Form.Item>
+
+      {YoutubeLink && (
+        <iframe
+          width="560"
+          height="315"
+          src={getYouTubeEmbedLink(YoutubeLink)}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
         <Form.Item
           wrapperCol={{
             offset: 8,

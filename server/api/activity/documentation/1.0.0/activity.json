@@ -886,6 +886,9 @@
           },
           "activity_template": {
             "type": "string"
+          },
+          "YoutubeLink": {
+            "type": "string"
           }
         }
       },
@@ -929,6 +932,9 @@
             }
           },
           "activity_template": {
+            "type": "string"
+          },
+          "YoutubeLink": {
             "type": "string"
           },
           "created_by": {

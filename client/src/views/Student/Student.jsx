@@ -51,6 +51,7 @@ function Student() {
                 >
                   <li>{`${learningStandard.name}: Activity ${activity.number}`}</li>
                 </div>
+                
               ))
           ) : (
             <div>
@@ -62,6 +63,7 @@ function Student() {
           )}
         </ul>
       </div>
+
     </div>
   );
 }

@@ -102,7 +102,6 @@ module.exports = {
         activityComponents.push(newComponent);
       }
     });
-
     const updatedActivity = await strapi.services.activity.update(
       { id },
       { description, images, StandardS, link, learning_components: activityComponents }

@@ -18,8 +18,10 @@ export default function LessonEditor({
   const [name, setName] = useState(learningStandard.name)
   const [description, setDescription] = useState("")
   const [standards, setStandards] = useState("")
-  const [link, setLink] = useState("")
-  const [linkError, setLinkError] = useState(false)
+  const [youtubeLink, setYoutubeLink] = useState("")
+  const [additionalLink, setAdditionalLink] = useState("")
+  const [youtubeLinkError, setYoutubeLinkError] = useState(false)
+  const [additionalLinkError, setAdditionalLinkError] = useState(false)
   const [displayName, setDisplayName] = useState(learningStandard.name)
   // eslint-disable-next-line
   const [_, setSearchParams] = useSearchParams()
@@ -30,9 +32,21 @@ export default function LessonEditor({
     setName(res.data.name)
     setDescription(res.data.expectations)
     setStandards(res.data.standards)
-    setLink(res.data.link)
-    setLinkError(false)
+    setYoutubeLink(res.data.youtubeLink)
+    setAdditionalLink(res.data.additionalLink)
+    setAdditionalLinkError(false)
+    setYoutubeLinkError(false)
   }
+
+  const handleYouTubeLinkChange = (event) => {
+    setYoutubeLink(event.target.value);
+  };
+
+  const getYouTubeEmbedLink = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : null;
+  };
 
   useEffect(() => {
     setDisplayName(learningStandard.name)
@@ -41,12 +55,19 @@ export default function LessonEditor({
   const handleCancel = () => {
     setVisible(false)
   }
-
   const handleSubmit = async () => {
-    if (link) {
-      const goodLink = checkURL(link)
-      if (!goodLink) {
-        setLinkError(true)
+    if (youtubeLink) {
+      const goodYoutube = checkURL(youtubeLink)
+      if (!goodYoutube) {
+        setYoutubeLinkError(true)
+        message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
+        return
+      }
+    }
+    if (additionalLink) {
+      const goodAdditional = checkURL(additionalLink)
+      if (!goodAdditional) {
+        setAdditionalLinkError(true)
         message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
         return
       }
@@ -56,7 +77,8 @@ export default function LessonEditor({
       name,
       description,
       standards,
-      link
+      additionalLink,
+      youtubeLink
     )
     if (response.err) {
       message.error("Fail to update lesson")
@@ -127,17 +149,52 @@ export default function LessonEditor({
               placeholder="Enter lesson standards"
             />
           </Form.Item>
+
+          {/* <Form.Item label="Upload Video">
+            <Input
+              onChange={e => {
+                setYoutubeLink(e.target.value)
+                setYoutubeLinkError(false)
+              }}
+              style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={youtubeLink}
+              placeholder="Enter a link"
+            />
+          </Form.Item> */}
+
           <Form.Item label="Link to Additional Resources (Optional)">
             <Input
               onChange={e => {
-                setLink(e.target.value)
-                setLinkError(false)
+                setAdditionalLink(e.target.value)
+                setAdditionalLinkError(false)
               }}
-              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={link}
+              style={additionalLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={additionalLink}
               placeholder="Enter a link"
             />
           </Form.Item>
+
+
+        <Form.Item label="Upload YouTube Video">
+        <Input
+          placeholder="Enter YouTube link here"
+          value={youtubeLink}
+          style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+          onChange={handleYouTubeLinkChange}
+        />
+      </Form.Item>
+
+      {youtubeLink && (
+        <iframe
+          width="560"
+          height="315"
+          src={getYouTubeEmbedLink(youtubeLink)}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
+          
           <Form.Item
             wrapperCol={{
               offset: 8,

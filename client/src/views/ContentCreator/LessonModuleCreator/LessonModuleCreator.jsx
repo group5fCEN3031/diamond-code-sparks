@@ -203,6 +203,25 @@ export default function LessonModuleCreator({
               placeholder="Enter a link"
             />
           </Form.Item>
+          <Form.Item label="Link to Video">
+            <Input
+              onChange={e => {
+                setLink(e.target.value)
+                setLinkError(false)
+              }}
+              style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={link}
+              placeholder="Enter a link to video"
+            />
+            <Button
+              type="link"
+              htmlType="button"
+              size="large"
+              className="content-creator-button"
+            >
+              Edit
+            </Button>
+          </Form.Item>
           <Form.Item
             wrapperCol={{
               offset: 8,

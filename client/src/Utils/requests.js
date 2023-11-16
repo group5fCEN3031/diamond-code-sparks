@@ -376,7 +376,8 @@ export const createLessonModule = async (
   number,
   unit,
   standards,
-  link
+  link,
+  YoutubeLink
 ) =>
   makeRequest({
     method: POST,
@@ -388,6 +389,7 @@ export const createLessonModule = async (
       unit,
       standards,
       link,
+      YoutubeLink
     },
     auth: true,
     error: 'Login failed.',
@@ -451,7 +453,8 @@ export const updateLessonModule = async (
   name,
   expectations,
   standards,
-  link
+  link,
+  YoutubeLink
 ) =>
   makeRequest({
     method: PUT,
@@ -461,6 +464,7 @@ export const updateLessonModule = async (
       standards,
       expectations,
       link,
+      YoutubeLink,
     },
     auth: true,
     error: 'Failed to update unit',
@@ -474,9 +478,10 @@ export const updateActivityDetails = async (
   StandardS,
   images,
   link,
+  YoutubeLink,
   scienceComponents,
   makingComponents,
-  computationComponents
+  computationComponents,
 ) =>
   makeRequest({
     method: PUT,
@@ -488,6 +493,7 @@ export const updateActivityDetails = async (
       StandardS,
       images,
       link,
+      YoutubeLink,
       scienceComponents,
       makingComponents,
       computationComponents,
