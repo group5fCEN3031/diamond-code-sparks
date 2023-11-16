@@ -451,6 +451,7 @@ export const updateLessonModule = async (
   name,
   expectations,
   standards,
+  link,
   additionalLink,
   youtubeLink
 ) =>
@@ -461,6 +462,7 @@ export const updateLessonModule = async (
       name,
       standards,
       expectations,
+      link,
       additionalLink,
       youtubeLink
     },

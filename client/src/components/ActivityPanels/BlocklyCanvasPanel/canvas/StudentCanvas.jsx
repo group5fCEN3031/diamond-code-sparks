@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 let plotId = 1;
 
 export default function StudentCanvas({ activity }) {
+  const link = localStorage.getItem('link');
   const [hoverSave, setHoverSave] = useState(false);
   const [hoverUndo, setHoverUndo] = useState(false);
   const [hoverRedo, setHoverRedo] = useState(false);
@@ -43,6 +44,11 @@ export default function StudentCanvas({ activity }) {
 
   const replayRef = useRef([]);
   const clicks = useRef(0);
+
+  const getYouTubeEmbedLink = (url) => {
+    const videoId = url.substring(url.length - 11);
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
 
   const setWorkspace = () => {
     workspaceRef.current = window.Blockly.inject('blockly-canvas', {
@@ -540,6 +546,20 @@ export default function StudentCanvas({ activity }) {
         }
       </xml>
 
+      {/* Embedding the YouTube Video */}
+      <div className="youtube-video-container">
+        <iframe
+          width="860"
+          height="615"
+        //  src={"https://www.youtube.com/embed/U9mJuUkhUzk"}
+          src={getYouTubeEmbedLink(activity.link)}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
       {compileError && (
         <Alert
           message={compileError}
@@ -548,18 +568,6 @@ export default function StudentCanvas({ activity }) {
           onClose={(e) => setCompileError('')}
         ></Alert>
       )}
-       {/* Embedding the YouTube Video */}
-       <div className="youtube-video-container">
-        <iframe
-          width="860"
-          height="615"
-          src="https://www.youtube.com/embed/BphbLthD3Ek" // Replace [VideoID] with your YouTube video ID
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
     </div>
   );
 }
