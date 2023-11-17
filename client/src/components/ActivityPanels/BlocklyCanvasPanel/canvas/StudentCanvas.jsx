@@ -546,22 +546,23 @@ export default function StudentCanvas({ activity }) {
      
       {/* Embedding the YouTube Video */}
       
-      <div id='horizontal-container' className='flex flex-column'>
-        <div className='flex flex-row'></div>
-        <div id='bottom-container'>
-      <div style={{ margin: '10px', textAlign: 'center' }}>     
-       <Col 
-      flex='none' id='section-header'>
-                {"Tutorial Video"}
+      <div id='horizontal-container' className='flex flex-col'>
+        <div className='flex flex-row'>
+          <div
+            id='bottom-container'
+            className='flex flex-column vertical-container overflow-visible'
+          >
+            <Row id='icon-control-panel'>
+              <Col flex='none' id='section-header'>
+                Tutorial Video
               </Col>
-        <ReactPlayer 
-          url={activity.link}
-          width='800px' 
-          height='450px'
-         />
-         </div>
-         </div>
-         </div>
+            </Row>
+            <div id='container' style={{padding: '30px'}}>
+                <ReactPlayer url={activity.link} controls={false} />
+            </div>
+          </div>
+        </div> 
+      </div>
          
 
       {compileError && (
