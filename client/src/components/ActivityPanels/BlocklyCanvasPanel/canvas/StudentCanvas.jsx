@@ -577,7 +577,7 @@ export default function StudentCanvas({ activity }) {
             <Row style={{/*backgroundColor:'yellow'*/}} wrap={false}>
               <Col style={{/*backgroundColor:'blue'*/}}>
                   <div id='container' style={{padding: '30px 0 0 30px'}}>
-                    <ReactPlayer url={activity.link} controls={false} /> {/*video player*/}
+                    <ReactPlayer url={activity.link} controls={true} /> {/*video player*/}
                   </div>
               </Col>
 
