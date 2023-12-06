@@ -38,7 +38,6 @@ export default function StudentCanvas({ activity }) {
   const [lastSavedTime, setLastSavedTime] = useState(null);
   const [lastAutoSave, setLastAutoSave] = useState(null);
 
-  
   const [forceUpdate] = useReducer((x) => x + 1, 0);
   const navigate = useNavigate();
   const workspaceRef = useRef(null);
@@ -592,33 +591,14 @@ export default function StudentCanvas({ activity }) {
                   {/*---------------------------------------------------------------------------------------------
                   this is where the method of getting the transcription would be called instead of this paragraph
                   -----------------------------------------------------------------------------------------------*/}
-                  <p>
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                    A copypasta is a block of text copied and pasted to the internet and social media. 
-                    opypasta containing controversial ideas or lengthy rants are often posted for humorous purposes,
-                    to provoke reactions from those unaware that the posted text is a meme.
-                  </p>
-                </div>
+                    <p>
+                      A copypasta is a block of text copied and pasted to the internet and social media. Copypasta containing controversial ideas or lengthy rants are often posted for humorous purposes, to provoke reactions from those unaware that the posted text is a meme. A copypasta is a block of text copied and pasted to the internet and social media. Copypasta containing controversial ideas or lengthy rants are often posted for humorous purposes, to provoke reactions from those unaware that the posted text is a meme.A copypasta is a block of text copied and pasted to the internet and social media. Copypasta containing controversial ideas or lengthy rants are often posted for humorous purposes, to provoke reactions from those unaware that the posted text is a meme.A copypasta is a block of text copied and pasted to the internet and social media. Copypasta containing controversial ideas or lengthy rants are often posted for humorous purposes, to provoke reactions from those unaware that the posted text is a meme.
+                    </p>
+                </div> 
+               
 
                 {/*enable/disable closed captions option*/}
-                <Row justify={'start'} style={{paddingTop: '10px', paddingBottom: '10px'}}>
+                {/* <Row justify={'start'} style={{paddingTop: '10px', paddingBottom: '10px'}}>
                   <Col offset={1}>
                     <button id='secondary-section-header' style={{width: '5vw'}}>
                       CC on
@@ -636,7 +616,7 @@ export default function StudentCanvas({ activity }) {
                       </button>
                     </Dropdown>
                   </Col>
-                </Row>
+                </Row> */}
               </Col>
             </Row>
             {/* Comment Section container */}

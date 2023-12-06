@@ -36,7 +36,39 @@ const MentorActivityDetailModal = ({
   const [linkError, setLinkError] = useState(false)
   const [additionalLinkError, setAdditionalLinkError] = useState(false)
   const [submitButton, setSubmitButton] = useState(0)
+  const [file, setFile] = useState(null)
+  const [transcript, setTranscript] = useState("")
   const navigate = useNavigate()
+
+  var videoFileName = 'Like Father, Like Son _ LiMu Emu & Doug _ Liberty Mutual Insurance Commercial.mp4'; 
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const transcribe = async () => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append(videoFileName, file);
+
+    try {
+      const response = await axios.post(
+        'https://api.openai.com/v1/audio/transcriptions',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${process.env.REST_OPENAI_API_KEY}`,
+          },
+        }
+      );
+
+      setTranscript(response.data.text);
+    } catch (error) {
+      console.error('Error during transcription:', error);
+    }
+  };
 
   const handleYouTubeLinkChange = (event) => {
     setYoutubeLink(event.target.value);
@@ -285,6 +317,9 @@ const MentorActivityDetailModal = ({
           allowFullScreen
         ></iframe>
       )}
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={transcribe}>Transcribe</button>
+      {transcript && <div>Transcript: {transcript}</div>}
 
         <Form.Item
           id="form-label"
