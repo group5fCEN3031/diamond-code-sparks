@@ -151,19 +151,19 @@ Before submitting a pull request, rebase the feature branch into the target bran
 
 
 ### Features Implemented 
-• Allow teachers to upload a link to the YouTube video on teacher view
+- Allow teachers to upload a link to the YouTube video on teacher view
 SCREENSHOT
-• Show teachers a preview of the YouTube video and have pause breaks for interactivity 
+- Show teachers a preview of the YouTube video and have pause breaks for interactivity 
 SCREENSHOT
-• Show the video in the student view
+- Show the video in the student view
 SCREENSHOT
-• Styling of YouTube video in the student view
+- Styling of YouTube video in the student view
 SCREENSHOT
-• Generate a transcript of the YouTube video
+- Generate a transcript of the YouTube video
 SCREENSHOT
-• Implement a comments feature for students to ask questions about the video
+- Implement a comments feature for students to ask questions about the video
 SCREENSHOT
-• Create a video editor, where teachers can have interactive pop up questions at various pause breaks throughout the video
+- Create a video editor, where teachers can have interactive pop up questions at various pause breaks throughout the video
 SCREENSHOT
 
 
