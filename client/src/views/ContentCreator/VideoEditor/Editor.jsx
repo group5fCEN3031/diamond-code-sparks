@@ -50,7 +50,9 @@ const VideoEditor = ({ videoLink }) => {
         <ReactPlayer
           ref={playerRef}
           url={videoLink}
-          controls
+          width= '460px'
+          height= '315px'
+          controls={true}
           onProgress={handleProgress}
           playing={!isVideoPaused}
           onPlay={() => setIsVideoPaused(false)}

@@ -179,7 +179,7 @@ export default function LessonEditor({
 
         <Form.Item
           id="form-label"
-          label="Upload Video  Link   "
+          label="Upload Video Link:"
         >
           <Input
             onChange={e => {
