@@ -26,6 +26,7 @@ const PauseBreaks = ({ pauseBreaks, onAddPauseBreak, onRemovePauseBreak, isVideo
       <ul>
         {pauseBreaks.map((pauseBreak, index) => (
           <li key={index}>
+
             <button onClick={() => onRemovePauseBreak(pauseBreak)}  id = "rem-pause-btn">
               - Remove Pause-Break
               </button>
@@ -35,5 +36,6 @@ const PauseBreaks = ({ pauseBreaks, onAddPauseBreak, onRemovePauseBreak, isVideo
     </div>
   );
 };
+
 
 export default PauseBreaks;

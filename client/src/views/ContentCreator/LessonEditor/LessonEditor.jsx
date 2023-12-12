@@ -39,7 +39,6 @@ export default function LessonEditor({
     setVideoLink(res.data.videolink)
     setVideoLinkError(false)
     setYoutubeLinkError(false)
-
   }
 
   const handleYouTubeLinkChange = (event) => {
@@ -51,7 +50,6 @@ export default function LessonEditor({
     setVideoLink(event.target.value);
     setVideoLinkError(false);
   };
-
   const getYouTubeEmbedLink = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
@@ -166,8 +164,7 @@ export default function LessonEditor({
               required
               placeholder="Enter lesson standards"
             />
-          </Form.Item>
-          
+          </Form.Item>          
         <Form.Item label="Link to Additional Resources (Optional)">
           <Input
             onChange={e => {
@@ -202,15 +199,19 @@ export default function LessonEditor({
         </Form.Item>
         
       {/* {youtubeLink && (
-        <iframe
-          width="560"
-          height="315"
-          src={getYouTubeEmbedLink(youtubeLink)}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      )} */}
+=======
+
+          {/* <Form.Item label="Upload Video">
+            <Input
+              onChange={e => {
+                setYoutubeLink(e.target.value)
+                setYoutubeLinkError(false)
+              }}
+              style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+              value={youtubeLink}
+              placeholder="Enter a link"
+            />
+          </Form.Item> */}
           
           <Form.Item
             wrapperCol={{

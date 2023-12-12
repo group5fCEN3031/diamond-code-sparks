@@ -1,3 +1,11 @@
+!!!!!!!!! IMPORTANT !!!!!!!!!!!!! 
+<br/>
+For the current implementation of the student video viewer you need to have react-player installed locally onto your computer. This is because even though myself and Krish already had react-player installed in our files when the changes were committed, it wont work in a developer environment (ie the localhost environment we are currently working with) - but it would work on the actual site if we had the ability to change it.
+To get it you'll need to open a terminal and change your current directory to .../client , then enter " yarn add react-player "  (or if you don't have yarn installed use " npm install react-player ")
+<br/>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 # CaSMM
 
 > Computation and Science Modeling through Making
@@ -140,3 +148,30 @@ Before submitting a pull request, rebase the feature branch into the target bran
 
 - PRs to **master** should squash and merge
 - PRs to all other branches should create a merge commit
+
+
+### Features Implemented 
+- Allow teachers to upload a link to the YouTube video on teacher view
+SCREENSHOT
+- Show teachers a preview of the YouTube video and have pause breaks for interactivity 
+SCREENSHOT
+- Show the video in the student view
+SCREENSHOT
+- Styling of YouTube video in the student view
+SCREENSHOT
+- Generate a transcript of the YouTube video
+SCREENSHOT
+- Implement a comments feature for students to ask questions about the video
+SCREENSHOT
+- Create a video editor, where teachers can have interactive pop up questions at various pause breaks throughout the video
+SCREENSHOT
+
+
+### Outstanding Work
+- Create transcription field in Strapi database so the transcription of each video can be saved in the backend as team was having software issues with Strapi and was no able to get it implemented in the backend. Currently lacks the persistence from Teacher to Student view.
+- Comments section is very buggy and fails to save in backend majority of times
+- Pose timestamps of pause breaks in the Video Editor for teachers for them to easily view where the time stamps are
+
+### Built Open
+- Utilized OpenAI's API for AI based transcription: https://platform.openai.com/docs/overview
+- All other code is own based on various sources of documentation of necessary packages and logic. 
