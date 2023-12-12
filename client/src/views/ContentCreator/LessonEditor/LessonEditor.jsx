@@ -1,11 +1,10 @@
 import { Button, Form, Input, message, Modal } from "antd"
 import React, { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import {
-  getLessonModule,
-  updateLessonModule,
-} from "../../../Utils/requests"
+import { getLessonModule, updateLessonModule} from "../../../Utils/requests"
 import ActivityEditor from "../ActivityEditor/ActivityEditor"
+import VideoEditor from '../VideoEditor/Editor'; // Import the VideoEditor component
+
 
 export default function LessonEditor({
   learningStandard,
@@ -19,8 +18,10 @@ export default function LessonEditor({
   const [description, setDescription] = useState("")
   const [standards, setStandards] = useState("")
   const [youtubeLink, setYoutubeLink] = useState("")
+  const [videolink, setVideoLink] = useState("")
   const [additionalLink, setAdditionalLink] = useState("")
   const [youtubeLinkError, setYoutubeLinkError] = useState(false)
+  const [videoLinkError, setVideoLinkError] = useState(false)
   const [additionalLinkError, setAdditionalLinkError] = useState(false)
   const [displayName, setDisplayName] = useState(learningStandard.name)
   // eslint-disable-next-line
@@ -35,6 +36,8 @@ export default function LessonEditor({
     setYoutubeLink(res.data.youtubeLink)
     setAdditionalLink(res.data.additionalLink)
     setAdditionalLinkError(false)
+    setVideoLink(res.data.videolink)
+    setVideoLinkError(false)
     setYoutubeLinkError(false)
   }
 
@@ -43,6 +46,10 @@ export default function LessonEditor({
     setYoutubeLinkError(false);
   };
 
+  const handleVideoLinkChange = (event) => {
+    setVideoLink(event.target.value);
+    setVideoLinkError(false);
+  };
   const getYouTubeEmbedLink = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
@@ -61,6 +68,14 @@ export default function LessonEditor({
       const goodYoutube = checkURL(youtubeLink)
       if (!goodYoutube) {
         setYoutubeLinkError(true)
+        message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
+        return
+      }
+    }
+    if (videolink) {
+      const goodvid = checkURL(videolink)
+      if(!goodvid) {
+        setVideoLinkError(true)
         message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
         return
       }
@@ -149,7 +164,42 @@ export default function LessonEditor({
               required
               placeholder="Enter lesson standards"
             />
-          </Form.Item>
+          </Form.Item>          
+        <Form.Item label="Link to Additional Resources (Optional)">
+          <Input
+            onChange={e => {
+              setAdditionalLink(e.target.value)
+              setAdditionalLinkError(false)
+            }}
+            style={additionalLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+            value={additionalLink}
+            placeholder="Enter a link"
+          />
+        </Form.Item>
+
+        <Form.Item
+          id="form-label"
+          label="Upload Video  Link   "
+        >
+          <Input
+            onChange={e => {
+              setVideoLink(e.target.value)
+              setVideoLinkError(false)
+            }}
+            className="input"
+            onchange={handleVideoLinkChange}
+            value={videolink}
+            style={videoLinkError ? { backgroundColor: "#FFCCCC" } : {}}
+            placeholder="Enter video link"
+          />
+        </Form.Item>
+        
+        <Form.Item> 
+          {videolink && <VideoEditor videoLink={videolink} />}
+        </Form.Item>
+        
+      {/* {youtubeLink && (
+=======
 
           {/* <Form.Item label="Upload Video">
             <Input
@@ -162,39 +212,6 @@ export default function LessonEditor({
               placeholder="Enter a link"
             />
           </Form.Item> */}
-
-          <Form.Item label="Link to Additional Resources (Optional)">
-            <Input
-              onChange={e => {
-                setAdditionalLink(e.target.value)
-                setAdditionalLinkError(false)
-              }}
-              style={additionalLinkError ? { backgroundColor: "#FFCCCC" } : {}}
-              value={additionalLink}
-              placeholder="Enter a link"
-            />
-          </Form.Item>
-
-
-         <Form.Item label="Upload YouTube Video">
-          <Input
-          placeholder="Enter YouTube link here"
-          value={youtubeLink}
-          style={youtubeLinkError ? { backgroundColor: "#FFCCCC" } : {}}
-          onChange={handleYouTubeLinkChange}
-        />
-      </Form.Item>
-
-      {youtubeLink && (
-        <iframe
-          width="560"
-          height="315"
-          src={getYouTubeEmbedLink(youtubeLink)}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      )}
           
           <Form.Item
             wrapperCol={{
