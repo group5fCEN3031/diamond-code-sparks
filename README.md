@@ -169,5 +169,5 @@ All of the deployments and releases are handled automatically with [GitHub Actio
 
 Before submitting a pull request, rebase the feature branch into the target branch to resolve any merge conflicts.
 
-- PRs to **master** should squash and merge
+- PRs to **working** should squash and merge
 - PRs to all other branches should create a merge commit
