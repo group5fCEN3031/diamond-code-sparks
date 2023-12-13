@@ -45,6 +45,11 @@ Cloud-based programming interface
 
    > Grant permission to the **scripts** and **server** directories if you are prompted
 
+### How to update database
+- To update the database, follow all instructions to run the project locally FIRST
+- Then input the following into your browswer `http://localhost:1337/admin`
+- This will give you access to the Strapi database if updates are needed
+
 ### Outstanding Work
 - Create transcription field in Strapi database so the transcription of each video can be saved in the backend as team was having software issues with Strapi and was no able to get it implemented in the backend. Currently lacks the persistence from Teacher to Student view.
 - Comments section is very buggy and fails to save in backend majority of times
