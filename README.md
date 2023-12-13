@@ -1,11 +1,3 @@
-!!!!!!!!! IMPORTANT !!!!!!!!!!!!! 
-<br/>
-For the current implementation of the student video viewer you need to have react-player installed locally onto your computer. This is because even though myself and Krish already had react-player installed in our files when the changes were committed, it wont work in a developer environment (ie the localhost environment we are currently working with) - but it would work on the actual site if we had the ability to change it.
-To get it you'll need to open a terminal and change your current directory to .../client , then enter " yarn add react-player "  (or if you don't have yarn installed use " npm install react-player ")
-<br/>
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 # CaSMM
 
 > Computation and Science Modeling through Making
