@@ -45,18 +45,23 @@ The development environment is composed of five servers. The first one is run wi
 
 * `casmm-compile_queue-dev`
 
-#### Running
+### Instructions for how to run the project locally 
 
 `casmm-client-dev`
 
-1. Follow the [client](/client#setup) setup
-2. Run `yarn start` from `/client`
+1. Install [Node](https://nodejs.org/en/) and [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable)
+2. Run `yarn` to install project dependencies
+3. Run `yarn start` to startup the client (please note that much of the functionality will not work without also starting up the backend services)
+4. Run `yarn add dotenv axios` to include the necessary packages for the OpenAI transcription API
+5. Run `yarn add react-player` to include the necessary packages for to utilze the YouTube videos in the development enviornment in the program.
+6. Navigate to chrome://flags/ and enable the #enable-experimental-web-platform-features flag (This will provide your browser access to serial ports)
+7. Run `yarn start` from `/client`
 
 `casmm-server-dev`, `casmm-compile-dev`, `casmm-db-dev`, and `casmm-compile_queue-dev`
 
-1. Install [docker](https://docs.docker.com/get-docker/)
+8. Install [docker](https://docs.docker.com/get-docker/)
 
-2. Run `docker compose up` from `/`
+9. Run `docker compose up` from `/`
 
    > Grant permission to the **scripts** and **server** directories if you are prompted
    
