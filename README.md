@@ -155,18 +155,15 @@ All of the deployments and releases are handled automatically with [GitHub Actio
 
 > Locked for direct commits — all commits must be made from a non-protected branch and submitted via a pull request with one approving review
 
-- **master** - Production application
+- **working** - Production application
 
 #### Non-protected
 
 > Commits can be made directly to the branch
 
-- **release** - Staging application
-- **develop** - Working version of the application
-- **feature/<`scaffold`>-<`feature-name`>** - Based off of develop
-  - ex. **feature/cms-strapi**
-- **hotfix/<`scaffold`>-<`fix-name`>** - Based off of master
-  - ex. **hotfix/client-cors**
+- **originalpull** - initial version of the forked repository 
+- **CommentsJackie** - initial work for comments section
+- **video** - video editor branch 
 
 ### Pull Requests
 
