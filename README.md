@@ -47,7 +47,7 @@ Cloud-based programming interface
 
 ### How to update database
 - To update the database, follow all instructions to run the project locally FIRST
-- Then input the following into your browswer `http://localhost:1337/admin`
+- Then input the following into your browser `http://localhost:1337/admin`
 - This will give you access to the Strapi database if updates are needed
 
 ### Outstanding Work
@@ -55,7 +55,7 @@ Cloud-based programming interface
 - Comments section is very buggy and fails to save in backend majority of times
 - Pose timestamps of pause breaks in the Video Editor for teachers for them to easily view where the time stamps are
 
-### Built Open
+### Built Upon
 - Utilized OpenAI's API for AI based transcription: https://platform.openai.com/docs/overview
 - All other code is own based on various sources of documentation of necessary packages and logic. 
 
