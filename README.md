@@ -11,19 +11,19 @@ Cloud-based programming interface
 
 ### Features Implemented 
 - Allow teachers to upload a link to the YouTube video on teacher view
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/Yi9WZBy.jpg)
 - Show teachers a preview of the YouTube video and have pause breaks for interactivity 
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/TU9jMCc.jpg)
 - Show the video in the student view
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/SGQ9J6q.jpg)
 - Styling of YouTube video in the student view
-SCREENSHOT
-- Generate a transcript of the YouTube video
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/VWoYy3F.jpg)
+- Generate a transcript of the YouTube video <br>
+![Features Implemented](https://i.imgur.com/ztxRJhC.jpg)
 - Implement a comments feature for students to ask questions about the video
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/YvkroNi.jpg)
 - Create a video editor, where teachers can have interactive pop up questions at various pause breaks throughout the video
-SCREENSHOT
+![Features Implemented](https://i.imgur.com/TU9jMCc.jpg)
 
 ### Instructions for how to run the project locally 
 
